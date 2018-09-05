@@ -1,0 +1,57 @@
+<html>
+<head>
+    <title></title>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+ 
+</head>
+<body>
+<form id="form1" runat="server">
+  <input type='file' id="imgInp" />
+  <img id="blah" src="#" alt="your image" />
+</form>
+ 
+</body>
+<script>
+$(document).ready(function () {
+        
+    function readURL(input) {
+
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+          $('#blah').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+      }
+
+
+
+     var formData = new FormData();
+    formData.append('file',  input.files[0]);
+    $.ajax({
+            url: "http://localhost:2887/Uploader.ashx",
+            type: "POST",
+            data:  formData,
+            beforeSend: function(data){console.log("before send"+data);},
+            contentType: false,
+            processData:false,
+            success: function(data)
+            {
+           console.log("success");
+            },
+            error: function(errData) 
+            {
+                console.log("error")
+            }           
+       });
+    }
+
+    $("#imgInp").change(function() {
+    readURL(this);
+    });
+});  
+</script>
+</html>

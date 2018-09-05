@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<!-- Mirrored from storage.googleapis.com/themevessel-items/the-nest/index-4.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 02 Jul 2018 07:28:29 GMT -->
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '../../../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-P5MJCCG');</script>
+    <!-- End Google Tag Manager -->
+    <title>The Nest - Real Estate HTML Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+
+    <!-- External CSS libraries -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-submenu.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="css/leaflet.css" type="text/css">
+    <link rel="stylesheet" href="css/map.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" type="text/css" href="fonts/linearicons/style.css">
+    <link rel="stylesheet" type="text/css"  href="css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" type="text/css"  href="css/dropzone.css">
+    <link rel="stylesheet" type="text/css"  href="css/magnific-popup.css">
+
+    <!-- Custom stylesheet -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" id="style_sheet" href="css/skins/default.css">
+
+    <!-- Favicon icon -->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" >
+
+    <!-- Google fonts -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800%7CPlayfair+Display:400,700%7CRoboto:100,300,400,400i,500,700">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link rel="stylesheet" type="text/css" href="css/ie10-viewport-bug-workaround.css">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script type="text/javascript" src="js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="js/ie-emulation-modes-warning.js"></script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="js/html5shiv.min.js"></script>
+    <script type="text/javascript" src="js/respond.min.js"></script>
+    <![endif]-->
+
+
+<script type="text/javascript">
+    // $(function () {
+       
+
+    //      $('#city').multiselect({
+    //         includeSelectAllOption: true
+    //     });
+
+
+
+    // });
+</script>
+
+
+<script>
+function submitval()
+{
+
+
+//  var selected = $("#EnCity option:selected");
+//         var AllCities = "";
+//         selected.each(function () {
+//             AllCities += $(this).text()  + "\n";
+//         });
+       
+// var CityValues=AllCities;
+
+
+ var selected = $("#city option:selected");
+        var AllLoca = [];
+        selected.each(function () {
+           // AllLoca += $(this).text()  + "\n";
+            // AllLoca.push("'"+$(this).text().trim()+"'");
+             AllLoca.push($(this).text().trim());
+
+        });
+       
+var LocaValues=AllLoca.toString();
+
+var city=$('#EnCity').val();
+
+ // var selected = $("#Bed option:selected");
+ //        var AllBed = "";
+ //        selected.each(function () {
+ //            AllBed += $(this).text()  + "\n";
+ //        });
+       
+// var BedValues=AllBed;
+
+
+var MinAmt=$("#MinAmt").val();
+//alert(MinAmt)
+
+  var SubmitProperty = new Object();
+SubmitProperty.City= $('#EnCity').val();
+  SubmitProperty.Location= LocaValues;
+   SubmitProperty.BedRoomsType= $('#Bed').val();
+    var asynctype="FILTER";
+            window.location.href = "properties-All.html?Location="+LocaValues+"&City="+city+"&Type="+asynctype;               
+              //alert(JSON.stringify(Stock));
+                           // $.ajax({
+                           // headers: {
+                           //             'Accept': 'application/json',
+                           //       'Content-Type': 'application/json'
+                           //           },
+                           //  // url: "http://mgridapi.azurewebsites.net/api/LocationSearch",
+
+                           // url: "http://localhost:2887/api/submitproperty",
+                           //  // url: "http://mgridapi.azurewebsites.net/api/submitproperty",
+                           // type: "Put",
+                           // data: JSON.stringify(SubmitProperty),
+                           //  async: false,
+                           //  datatype: "json",
+                           //  }).done(function (response) {
+
+                           //     var result=response;
+                           // // 
+
+                           //      }).error(function (err) {
+                           //                                      //alert("Error " + err.status);
+                           //         var result=err;
+                           //     });
+
+
+
+
+}
+
+
+$(document).ready(function () {
+                    
+                    $.ajax({
+                      url: "http://mgridapi.azurewebsites.net/api/submitproperty",
+                        type: "GET",
+                     /*   data: {},
+*/                        dataType: "json",
+                        async: false,
+                        success: function (resp) {
+                            
+                 /*         var id=$.parseJSON(resp); */
+                 for(var i=0;i<resp.Table.length;i++){
+                          $("#price").html(resp.Table[i].PPOverallPrice)
+
+
+
+                              $("#City").html(resp.Table[i].City)
+                         $("#loca").html(resp.Table[i].Location)  
+                         // $("#strongprice").html(resp.Table[206].PPOverallPrice)  
+                         
+                          // $("#spanprice").html(resp.Table[206].PPOverallPrice)
+                         $("#Ptype").html(resp.Table[i].Need)  
+                         $("#Sqf").html(resp.Table[i].BuiltupAreasqFeet)  
+                         $("#Bath").html(resp.Table[i].BathRooms)       
+                         $("#Bed").html(resp.Table[i].BedRoomsType)
+                               $("#Bal").html(resp.Table[i].Balconies)   
+                        /* $("#img").html(resp.Table[206].Photo)*/  
+                         // $("#Desc").html(resp.Table[14].PropertyDescription)  
+                         // $("#Ame").html(resp.Table[14].Amenities)  
+                               
+
+            /*  $('#spanprice').html(id.Name);*/
+
+
+          
+}
+          },
+});
+    
+});
+
+
+
+  // $("#btnsubmit").click(function(){
+
+  //                        alert("hai");
+
+
+
+  //                             var search = new Object();
+  //                               search.Location="Chennai";
+  //                             alert(JSON.stringify(Stock));
+  //                          $.ajax({
+  //                          headers: {
+  //                                      'Accept': 'application/json',
+  //                                'Content-Type': 'application/json'
+  //                                    },
+  //                           url: "http://mgridapi.azurewebsites.net/api/LocationSearch",
+
+  //                          url: "http://localhost:2887/api/LocationSearch",
+  //                          type: "Get",
+  //                          data: JSON.stringify(search),
+  //                           async: false,
+  //                           datatype: "json",
+  //                           }).done(function (response) {
+
+
+
+  //                               }).error(function (err) {
+  //                                                               alert("Error " + err.status);
+
+  //                              });
+
+
+
+ 
+
+  //   });
+
+
+</script>
+
+ <script>
+
+
+
+
+
+      /*  function getUrlVars()
+        {
+            var vars = [], hash;
+            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            for(var i = 0; i < hashes.length; i++)
+            {
+                hash = hashes[i].split('=');
+                vars.push(hash[0]);
+                vars[hash[0]] = hash[1];
+            }
+            return vars;
+        }
+
+*/
+ 
+        $(document).ready(function () {
+            // var ASYNCType="Put";
+            // var ASYNCdata=[];
+            document.getElementById('all-properties').innerHTML = "";
+            var html="";
+            // var Type = getUrlVars()["Type"];
+            // if(Type=="FILTER")
+            // {
+
+
+            //     var LocationArr=[];
+            //     var NewLocationArr=[];
+
+            //     var LocationArr = getUrlVars()["Location"].split(",");
+
+            //     jQuery.each( LocationArr, function( i, val ) {
+            //         NewLocationArr.push("'"+val+"'");
+   
+            //     });
+            //     var Location=NewLocationArr.toString();
+            //     var City = getUrlVars()["City"];
+            //     //alert(Location+','+City);
+   
+
+            //     var SubmitProperty = new Object();
+            //     SubmitProperty.City= City;
+            //     SubmitProperty.Location= Location;
+            //     ASYNCdata=JSON.stringify(SubmitProperty);
+            // }
+            // else if(Type=="SUBMIT")
+            // {              
+            //      ASYNCType="Get";
+
+            // }                
+            $.ajax({
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                // url: "http://mgridapi.azurewebsites.net/api/LocationSearch",
+
+                // url: "http://localhost:2887/api/submitproperty",
+
+
+                url: "http://mgridapi.azurewebsites.net/api/submitlast",
+                // type:ASYNCType,
+                // data:ASYNCdata, 
+                async: false,
+                datatype: "json",
+            }).done(function (resp) {
+               for(var i=0;i<5;i++)
+            {
+                $("#price").html(resp.Table[i].PPOverallPrice)
+
+
+
+                $("#City").html(resp.Table[i].City)
+                $("#loca").html(resp.Table[i].Location)  
+                // $("#strongprice").html(resp.Table[206].PPOverallPrice)  
+                         
+                // $("#spanprice").html(resp.Table[206].PPOverallPrice)
+                $("#Ptype").html(resp.Table[i].Need)  
+                $("#Sqf").html(resp.Table[i].BuiltupAreasqFeet)  
+                $("#Bath").html(resp.Table[i].BathRooms)       
+                $("#Bed").html(resp.Table[i].BedRoomsType)
+                $("#Bal").html(resp.Table[i].Balconies)   
+                /* $("#img").html(resp.Table[206].Photo)*/  
+                // $("#Desc").html(resp.Table[14].PropertyDescription)  
+                // $("#Ame").html(resp.Table[14].Amenities)  
+                               
+
+                /*  $('#spanprice').html(id.Name);*/
+
+                // html +=`<div class="property" id="all-properties">
+                html +=' <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12  filtr-item" data-category="1, 2, 3"><div class="property-img" ><div class="property-tag button alt featured">Featured</div><div class="property-tag button sale" id="Ptype">'+resp.Table[i].Need+'</div>'
+                html += '<div class="property-price" id="price">'+resp.Table[i].PPOverallPrice+'</div><img src="img/properties/properties-1.jpg" alt="fp" class="img-responsive">'  
+                html +='<div class="property-overlay"><a href="properties-details.html" class="overlay-link"><i class="fa fa-link"></i></a><a class="overlay-link property-video" title="Lexus GS F"><i class="fa fa-video-camera"></i></a><div class="property-magnify-gallery"><a href="img/properties/properties-1.jpg" class="overlay-link"> <i class="fa fa-expand"></i>'
+                html +='</a><a href="img/properties/properties-2.jpg" class="hidden"></a><a href="img/properties/properties-3.jpg" class="hidden"></a></div></div></div>'
+                html +=  '<div class="property-content"><h1 class="title"><a href="properties-details.html">Modern Family Home</a>   <h3 class="property-address">'
+                   html += '<a href="properties-details.html"><i class="fa fa-map-marker" id="loca">'+resp.Table[i].Location+'</i></a></h3><ul class="facilities-list clearfix"><li><i class="flaticon-square-layouting-with-black-square-in-east-area"></i>'
+                html +='<span id="Sqf">'+resp.Table[i].BuiltupAreasqFeet+'</span></li><li><i class="flaticon-bed"></i><span id="Bed">'+resp.Table[i].BedRoomsType+'</span></li><li><i class="flaticon-holidays"></i><span id="Bath">'+resp.Table[i].BathRooms+' </span>'
+                html += '</li><li><i class="flaticon-building"></i><span id="Bal">'+resp.Table[i].Balconies+'</span></li></ul></div> </div></div></div></div>'
+
+            }
+            $('#all-properties').append(html);
+         
+            })
+                        
+        });
+ 
+
+        // function GetAlldata(resp)
+        // {            
+        // }
+          
+
+
+
+
+
+
+    </script>
+
+
+
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P5MJCCG"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div class="page_loader"></div>
+
+<!-- Option Panel -->
+
+<!-- /Option Panel -->
+
+<!-- Top header start -->
+<header class="top-header hidden-xs" id="top">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="list-inline">
+                    <a href="tel:1-8X0-666-8X88"><i class="fa fa-phone"></i>1-8X0-666-8X88</a>
+                    <a href="tel:info@themevessel.com"><i class="fa fa-envelope"></i>info@themevessel.com</a>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <ul class="top-social-media pull-right">
+                    <li>
+                        <a href="login.html" class="sign-in"><i class="fa fa-sign-in"></i> Login</a>
+                    </li>
+                    <li>
+                        <a href="signup.html" class="sign-in"><i class="fa fa-user"></i> Register</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Top header end -->
+
+<!-- Main header start -->
+<header class="main-header">
+    <div class="container">
+        <nav class="navbar navbar-default">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navigation" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="index.html" class="logo">
+                    <img src="img/logos/logo.png" alt="logo">
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+                           <div class="navbar-collapse collapse" role="navigation" aria-expanded="true" id="app-navigation">
+                    <ul class="nav navbar-nav" style="margin-top: 7px;">
+                        <li class="dropdown active">
+                            <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false" style="    background-color: #ffffff;">BUY<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="properties-All.html">Apartment/Flats</a></li>
+                                <li><a href="properties-All.html">Villas</a></li>
+                                <li><a href="properties-All.html">independent House</a></li>
+                                <li><a href="properties-All.html">Residential Ploat</a></li>
+                                <li><a href="properties-All.html">Agricultural Ploat</a></li>
+                                <li><a href="properties-All.html">Service Apartments</a></li>
+                                <li><a href="properties-All.html">Gouest House</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown active" style="    left: 53px;">
+                            <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false" style="    background-color: #ffffff;">RENT<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="properties-All.html">Office Space</a></li>
+                                <li><a href="properties-All.html">Shop/Showroom</a></li>
+                                <li><a href="properties-All.html">industrial Estate</a></li>
+                                <li><a href="properties-All.html">SEZ Office Space</a></li>
+                                <li><a href="properties-All.html">Warehouse/Godown</a></li>
+                                <li><a href="properties-All.html">Commercial Land</a></li>
+                                <li><a href="properties-All.html">Others</a></li>
+                            </ul>
+                        </li>
+
+
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right rightside-navbar">
+                        <li>
+                            <a href="submit-property.html" class="button" style="margin-top: 33px;">Submit Property
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+        </nav>
+    </div>
+</header>
+<!-- Main header end -->
+
+<!-- Banner start -->
+<div class="banner">
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item item-100vh active">
+                <img src="img/banner/banner-slider-1.jpg" alt="banner-slider-1">
+                <div class="carousel-caption banner-slider-inner banner-tb text-left">
+                    <div class="banner-content banner-content-left">
+                     
+                        <div class="banner-search-box hidden-xs hidden-sm">
+                            <!-- Search area start -->
+                            <div class="search-area animated fadeInDown delay-1s">
+                                <div class="search-area-inner">
+                                    <div class="search-contents ">
+                                        <form method="GET">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                <div class="form-group">
+                                                   <select class="selectpicker search-fields" id="EnCity" name="property-status" data-live-search="true" data-live-search-placeholder="Search value">
+                                   <option >Enter City</option>
+                                   <option>Chennai</option>
+                                   <option>Madurai</option>
+                                    <option>Trichy</option>
+                               <!--    <option></option> -->
+
+                                </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                <div class="form-group">
+                                                    <select class="selectpicker search-fields" name="area-from" data-live-search="true" id="city" data-live-search-placeholder="Search value" Multiple>
+                                     <option>Enter Localities</option>
+                                    <option>Adyar</option>
+                                    <option>Alandur</option>
+                                    <option>Ambattur</option>
+                                    <option>Arumbakkam</option>
+                                    <option>Aminjikarai</option>
+                                    <option>AnnaNagar</option>
+                                    <option>Saidapet</option>
+                                    <option>vadapalani</option>
+                                    <option>Avadi</option>
+                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                <div class="form-group">
+                                                   <select class="selectpicker search-fields" id="EnProperty" name="property-status" data-live-search="true" data-live-search-placeholder="Search value">
+                                   <option >Enter Property</option>
+                                   <option>Rent</option>
+                                   <option>Sell</option>
+                               <!--    <option></option> -->
+
+                                </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                <div class="form-group">
+                                                    <select class="selectpicker search-fields" name="bathrooms" data-live-search="true" data-live-search-placeholder="Search value" >
+                                    
+                                     <option >Property Type-Residential</option>
+                      <option value='1'>Apartments/Flats</option>
+                      <option value='2'>Individual House/Villas</option>
+                      <option value='3'>Plots/Lands</option>
+                      <!--  <label>Commercial</label>
+                      <option value='1'>Apartments/Flats</option>
+                       <option value='2'>Individual House/Villas</option>
+                      <option value='3'>Plots/Lands</option> -->
+                                </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                <div class="form-group">
+                                                    <select class="selectpicker search-fields" name="bathrooms" data-live-search="true" data-live-search-placeholder="Search value" >
+                                 
+                                     <option>Property Type-Commercial</option>
+                      <option value='1'>Apartments/Flats</option>
+                      <option value='2'>Individual House/Villas</option>
+                      <option value='3'>Plots/Lands</option>
+                      <!--  <label>Commercial</label>
+                      <option value='1'>Apartments/Flats</option>
+                       <option value='2'>Individual House/Villas</option>
+                      <option value='3'>Plots/Lands</option> -->
+                                </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                <div class="form-group">
+                                                    <select class="selectpicker search-fields" id="MinAmt" name="property-status" data-live-search="true" data-live-search-placeholder="Search value">
+                                   <option >MIN $</option>
+                                   <option value="100000">1 lakh</option>
+<option value="500000">5 lakhs</option>
+<option value="1000000">10 lakhs</option>
+<option value="1500000">15 lakhs</option>
+<option value="2000000">20 lakhs</option>
+<option value="2500000">25 lakhs</option>
+<option value="3000000">30 lakhs</option>
+<option value="3500000">35 lakhs</option>
+<option value="4000000">40 lakhs</option>
+<option value="4500000">45 lakhs</option>
+<option value="5000000">50 lakhs</option>
+<option value="5500000">55 lakhs</option>
+<option value="6000000">60 lakhs</option>
+<option value="6500000">65 lakhs</option>
+<option value="7000000">70 lakhs</option>
+<option value="7500000">75 lakhs</option>
+<option value="8000000">80 lakhs</option>
+<option value="8500000">85 lakhs</option>
+<option value="9000000">90 lakhs</option>
+<option value="9500000">95 lakhs</option>
+<option value="10000000">1 crore</option>
+<option value="12500000">1.25 crores</option>
+<option value="15000000">1.5 crores</option>
+<option value="17500000">1.75 crores</option>
+<option value="20000000">2 crores</option>
+<option value="22500000">2.25 crores</option>
+<option value="25000000">2.5 crores</option>
+<option value="27500000">2.75 crores</option>
+<option value="30000000">3 crores</option>
+<option value="32500000">3.25 crores</option>
+<option value="35000000">3.5 crores</option>
+<option value="37500000">3.75 crores</option>
+<option value="40000000">4 crores</option>
+<option value="42500000">4.25 crores</option>
+<option value="45000000">4.5 crores</option>
+<option value="47500000">4.75 crores</option>
+<option value="50000000">5 crores</option>
+                                </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                <div class="form-group ">
+                                                   <select class="selectpicker search-fields" name="MaxAmt" data-live-search="true" data-live-search-placeholder="Search value">
+                                     <option>Max ₹</option>
+<option value="100000">1 lakh</option>
+<option value="500000">5 lakhs</option>
+<option value="1000000">10 lakhs</option>
+<option value="1500000">15 lakhs</option>
+<option value="2000000">20 lakhs</option>
+<option value="2500000">25 lakhs</option>
+<option value="3000000">30 lakhs</option>
+<option value="3500000">35 lakhs</option>
+<option value="4000000">40 lakhs</option>
+<option value="4500000">45 lakhs</option>
+<option value="5000000">50 lakhs</option>
+<option value="5500000">55 lakhs</option>
+<option value="6000000">60 lakhs</option>
+<option value="6500000">65 lakhs</option>
+<option value="7000000">70 lakhs</option>
+<option value="7500000">75 lakhs</option>
+<option value="8000000">80 lakhs</option>
+<option value="8500000">85 lakhs</option>
+<option value="9000000">90 lakhs</option>
+<option value="9500000">95 lakhs</option>
+<option value="10000000">1 crore</option>
+<option value="12500000">1.25 crores</option>
+<option value="15000000">1.5 crores</option>
+<option value="17500000">1.75 crores</option>
+<option value="20000000">2 crores</option>
+<option value="22500000">2.25 crores</option>
+<option value="25000000">2.5 crores</option>
+<option value="27500000">2.75 crores</option>
+<option value="30000000">3 crores</option>
+<option value="32500000">3.25 crores</option>
+<option value="35000000">3.5 crores</option>
+<option value="37500000">3.75 crores</option>
+<option value="40000000">4 crores</option>
+<option value="42500000">4.25 crores</option>
+<option value="45000000">4.5 crores</option>
+<option value="47500000">4.75 crores</option>
+<option value="50000000">5 crores</option>
+<option value="50000000">>5 crores</option>
+  </select>
+                                                </div>
+                                            </div>
+
+<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                <div class="form-group ">
+                                                     <select class="selectpicker search-fields" name="Bed" data-live-search="true" data-live-search-placeholder="Search value">
+                                   <option >Bed Rooms</option>
+                                     <option value='1'>Bed 1</option>
+                               <option value='2'>Bed 2</option>
+                           <option value='3'>Bed 3</option>
+    <option value='4'>Bed 4</option>
+    <option value='5'>Bed 5</option>
+  </select>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                  <div class="form-group">
+                              
+                                <input type="button" style="width: 122px;" id="btnsubmit" onclick="submitval()" name="Search" class="btn primary large"  value="Search">
+                            </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Search area start -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item item-100vh">
+                <img src="img/banner/banner-slider-2.jpg" alt="banner-slider-2">
+                <div class="container">
+                    <div class="carousel-caption banner-slider-inner">
+                        <div class="banner-content banner-content-left">
+                         
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item item-100vh">
+                <img src="img/banner/banner-slider-1.jpg" alt="banner-slider-1">
+                <div class="container">
+                    <div class="carousel-caption banner-slider-inner">
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="slider-mover-left" aria-hidden="true">
+                <i class="fa fa-angle-left"></i>
+            </span>
+            <span class="sr-only">Previous</span>
+        </a>
+
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="slider-mover-right" aria-hidden="true">
+                <i class="fa fa-angle-right"></i>
+            </span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+<!-- Banner end -->
+
+<!-- Search area start -->
+<div class="search-area hidden-lg hidden-md">
+    <div class="container">
+        <div class="search-area-inner">
+            <div class="search-contents ">
+                <form method="GET">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                            <div class="form-group">
+                                <select class="selectpicker search-fields" name="area-from" data-live-search="true" data-live-search-placeholder="Search value">
+                                    <option>Area From</option>
+                                    <option>1000</option>
+                                    <option>800</option>
+                                    <option>600</option>
+                                    <option>400</option>
+                                    <option>200</option>
+                                    <option>100</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                            <div class="form-group">
+                                <select class="selectpicker search-fields" name="property-status" data-live-search="true" data-live-search-placeholder="Search value">
+                                    <option>Property Status</option>
+                                    <option>For Sale</option>
+                                    <option>For Rent</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                            <div class="form-group">
+                                <select class="selectpicker search-fields" name="location" data-live-search="true" data-live-search-placeholder="Search value">
+                                    <option>Location</option>
+                                    <option>United States</option>
+                                    <option>United Kingdom</option>
+                                    <option>American Samoa</option>
+                                    <option>Belgium</option>
+                                    <option>Cameroon</option>
+                                    <option>Canada</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                            <div class="form-group">
+                                <select class="selectpicker search-fields" name="property-types" data-live-search="true" data-live-search-placeholder="Search value">
+                                    <option>Property Types</option>
+                                    <option>Residential</option>
+                                    <option>Commercial</option>
+                                    <option>Land</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                            <div class="form-group">
+                                <select class="selectpicker search-fields" name="bedrooms" data-live-search="true" data-live-search-placeholder="Search value" >
+                                    <option>Bedrooms</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                            <div class="form-group">
+                                <select class="selectpicker search-fields" name="bathrooms" data-live-search="true" data-live-search-placeholder="Search value" >
+                                    <option>Bathrooms</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                            <div class="form-group">
+                                <div class="range-slider">
+                                    <div data-min="0" data-max="150000" data-unit="USD" data-min-name="min_price" data-max-name="max_price" class="range-slider-ui ui-slider" aria-disabled="false"></div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 ">
+                            <div class="form-group">
+                                <button class="search-button">Search</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Search area start -->
+
+<!-- Featured properties start -->
+<div class="content-area featured-properties">
+    <div class="container">
+        <!-- Main title -->
+        <div class="main-title">
+            <h1>Featured Properties</h1>
+        </div>
+        <ul class="list-inline-listing filters filters-listing-navigation">
+            <li class="active btn filtr-button filtr" data-filter="all">All</li>
+            <li data-filter="1" class="btn btn-inline filtr-button filtr">House</li>
+            <li data-filter="2" class="btn btn-inline filtr-button filtr">Office</li>
+            <li data-filter="3" class="btn btn-inline filtr-button filtr">Apartment</li>
+            <li data-filter="4" class="btn btn-inline filtr-button filtr">Residential</li>
+        </ul>
+        <div class="row" style="height: 1000px">
+             <div class="filtr-container" style="padding: 0px;position: relative;height: 1000px;">
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-md-4">
+        
+      </div>
+
+      <div class="col-md-4"></div>
+
+      <div class="col-md-4"></div>
+
+    </div>
+  </div>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+               
+                    <div class="row" id="all-properties">
+                      
+                    </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12  filtr-item" data-category="1">
+                    
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12  filtr-item" data-category="2, 3">
+                    
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12  filtr-item" data-category="3, 4">
+                    
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12  filtr-item" data-category="4">
+                    
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12  filtr-item" data-category="1">
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Featured properties end -->
+
+<!-- Services start -->
+<div class="services mb-100 clearfix">
+    <div class="container">
+        <!-- Main title -->
+        <div class="main-title">
+            <h1>What Are you Looking For?</h1>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-6 wow fadeInLeft delay-04s">
+                <div class="services-info">
+                    <i class="flaticon-apartment"></i>
+                    <h5>Apartments</h5>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 wow fadeInLeft delay-04s">
+                <div class="services-info">
+                    <i class="flaticon-internet"></i>
+                    <h5>Houses</h5>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 wow fadeInRight delay-04s">
+                <div class="services-info">
+                    <i class="flaticon-vehicle"></i>
+                    <h5>Garages</h5>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 wow fadeInRight delay-04s">
+                <div class="services-info">
+                    <i class="flaticon-symbol"></i>
+                    <h5>Commercial</h5>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
+                </div>
+            </div>
+            <div class="col-lg-12 text-center mt-20">
+                <a href="#" class="btn button-md button-theme text-center">Read More</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Services end -->
+
+<!-- Recently properties start -->
+
+<!-- Partners block end -->
+
+<div class="clearfix"></div>
+<!-- Categories strat -->
+
+<!-- Categories end-->
+
+<!-- Pricing tables 2 start -->
+
+<!-- Pricing tables 2 end -->
+
+<!-- Testimonials 2 -->
+
+<!-- Testimonial 2 end -->
+<div class="clearfix"></div>
+
+<!-- Intro section strat -->
+>
+<!-- Intro section end -->
+
+<!-- Footer start -->
+<footer class="main-footer clearfix">
+    <div class="container">
+        <!-- Footer info-->
+        <div class="footer-info">
+            <div class="row">
+                <!-- About us -->
+                <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
+                    <div class="footer-item">
+                        <div class="main-title-2">
+                            <h1>Contact Us</h1>
+                        </div>
+                        <p>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's printing and
+                        </p>
+                        <ul class="personal-info">
+                            <li>
+                                <i class="fa fa-map-marker"></i>
+                                Address: 20/F Green Road, Dhanmondi, Dhaka
+                            </li>
+                            <li>
+                                <i class="fa fa-envelope"></i>
+                                Email:<a href="mailto:sales@hotelempire.com">info@themevessel.com</a>
+                            </li>
+                            <li>
+                                <i class="fa fa-phone"></i>
+                                Phone: <a href="tel:+55-417-634-7071">+55 4XX-634-7071</a>
+                            </li>
+                            <li>
+                                <i class="fa fa-fax"></i>
+                                Fax: +55 4XX-634-7071
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Links -->
+                <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                    <div class="footer-item">
+                        <div class="main-title-2">
+                            <h1>Links</h1>
+                        </div>
+                        <ul class="links">
+                            <li>
+                                <a href="index.html">Home</a>
+                            </li>
+                            <li>
+                                <a href="about.html">About Us</a>
+                            </li>
+                            <li>
+                                <a href="contact.html">Contact Us</a>
+                            </li>
+                            <li>
+                                <a href="blog-single-sidebar-right.html">Blog</a>
+                            </li>
+                            <li>
+                                <a href="blog-single-sidebar-right.html">Services</a>
+                            </li>
+                            <li>
+                                <a href="properties-list-rightside.html">properties Listing</a>
+                            </li>
+                            <li>
+                                <a href="properties-grid-rightside.html">properties Grid</a>
+                            </li>
+                            <li>
+                                <a href="properties-details.html">properties Details</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Recent cars -->
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="footer-item popular-posts">
+                        <div class="main-title-2">
+                            <h1>Popular Posts</h1>
+                        </div>
+                        <div class="media">
+                            <div class="media-left">
+                                <img class="media-object" src="img/properties/small-properties-1.jpg" alt="small-properties-1">
+                            </div>
+                            <div class="media-body">
+                                <h3 class="media-heading">
+                                    <a href="properties-details.html">Sweet Family Home</a>
+                                </h3>
+                                <p>February 27, 2018</p>
+                                <div class="price">
+                                    $734,000
+                                </div>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left">
+                                <img class="media-object" src="img/properties/small-properties-2.jpg" alt="small-properties-2">
+                            </div>
+                            <div class="media-body">
+                                <h3 class="media-heading">
+                                    <a href="properties-details.html">Modern Family Home</a>
+                                </h3>
+                                <p>February 27, 2018</p>
+                                <div class="price">
+                                    $734,000
+                                </div>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left">
+                                <img class="media-object" src="img/properties/small-properties-3.jpg" alt="small-properties-3">
+                            </div>
+                            <div class="media-body">
+                                <h3 class="media-heading">
+                                    <a href="properties-details.html">Beautiful Single Home</a>
+                                </h3>
+                                <p>February 27, 2018</p>
+                                <div class="price">
+                                    $734,000
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Subscribe -->
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="footer-item">
+                        <div class="main-title-2">
+                            <h1>Subscribe</h1>
+                        </div>
+                        <div class="newsletter clearfix">
+                            <p>
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+                            </p>
+
+                            <form action="#" method="post">
+                                <div class="form-group">
+                                    <input class="nsu-field btn-block" id="nsu-email-0" type="text" name="email" placeholder="Enter your Email Address" required="">
+                                </div>
+                                <div class="form-group mb-0">
+                                    <button type="submit" class="button-sm button-theme btn-block">
+                                        Subscribe
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer end -->
+
+<!-- Copy right start -->
+<div class="copy-right">
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-8 col-sm-12">
+               <a> &copy;2018 </a><a href="http://appshop.tech/">APP SHOP</a>. 
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <ul class="social-list clearfix">
+                    <li>
+                        <a href="#" class="facebook">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="twitter">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="linkedin">
+                            <i class="fa fa-linkedin"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="google">
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="rss">
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Copy end right-->
+
+<!-- Car Video Modal -->
+<div class="modal property-modal fade" id="propertyModal" tabindex="-1" role="dialog" aria-labelledby="carModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="carModalLabel">
+                    Find Your Dream House
+                </h5>
+                <p>
+                    123 Kathal St. Tampa City,
+                </p>
+                <span class="ratings">
+                    <i class="fa fa-star s1 active" data-score="1"></i>
+                    <i class="fa fa-star s2 active" data-score="2"></i>
+                    <i class="fa fa-star s3 active" data-score="3"></i>
+                    <i class="fa fa-star s4 active" data-score="4"></i>
+                    <i class="fa fa-star s5 active" data-score="5"></i>
+                </span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row modal-raw">
+                    <div class="col-lg-5 modal-left">
+                        <div class="modal-left-content">
+                            <div class="bs-example" data-example-id="carousel-with-captions">
+                                <div class="carousel slide" id="properties-carousel" data-ride="carousel">
+                                    <div class="carousel-inner" role="listbox">
+                                        <div class="item">
+                                            <img src="img/properties/properties-6.jpg" alt="Hyundai Santa">
+                                        </div>
+                                        <div class="item">
+                                            <img src="img/properties/properties-6.jpg" alt="Hyundai Santa">
+                                        </div>
+                                        <div class="item active">
+                                            <iframe class="modalIframe" src="https://www.youtube.com/embed/5e0LxrLSzok" allowfullscreen></iframe>
+                                        </div>
+                                    </div>
+
+                                    <a class="control control-prev" href="#properties-carousel" role="button" data-slide="prev">
+                                        <i class="fa fa-angle-left"></i>
+                                    </a>
+                                    <a class="control control-next" href="#properties-carousel" role="button" data-slide="next">
+                                        <i class="fa fa-angle-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="description">
+                                <h3>Description</h3>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.But also the leap into electronic typesetting, remaining,</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 modal-right">
+                        <div class="modal-right-content bg-white">
+                            <strong class="price">
+                                $178,000
+                            </strong>
+                            <section>
+                                <h3>Features</h3>
+                                <div class="features">
+                                    <ul class="bullets">
+                                        <li><i class="flaticon-air-conditioner"></i>Air conditioning</li>
+                                        <li><i class="flaticon-wifi"></i>Wifi</li>
+                                        <li><i class="flaticon-transport"></i>Parking</li>
+                                        <li><i class="flaticon-people-2"></i>Pool</li>
+                                        <li><i class="flaticon-weightlifting"></i>Gym</li>
+                                        <li><i class="flaticon-building"></i>Alarm</li>
+                                        <li><i class="flaticon-old-telephone-ringing"></i>Balcony</li>
+                                        <li><i class="flaticon-monitor"></i>TV</li>
+                                    </ul>
+                                </div>
+                            </section>
+                            <section>
+                                <h3>Overview</h3>
+                                <dl>
+                                    <dt>Model</dt>
+                                    <dd>Maxima</dd>
+                                    <dt>Condition</dt>
+                                    <dd>Brand New</dd>
+                                    <dt>Year</dt>
+                                    <dd>2018</dd>
+                                    <dt>Price</dt>
+                                    <dd>$178,000</dd>
+                                </dl>
+                            </section>
+                            <section>
+                                <h3>Last Review</h3>
+                                <div class="ratings" data-rating="5">
+                                    <span>
+                                        <i class="fa fa-star s1 active" data-score="1"></i>
+                                        <i class="fa fa-star s2 active" data-score="2"></i>
+                                        <i class="fa fa-star s3 active" data-score="3"></i>
+                                        <i class="fa fa-star s4 active" data-score="4"></i>
+                                        <i class="fa fa-star s5 active" data-score="5"></i>
+                                    </span>
+                                </div>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's </p>
+                            </section>
+                            <a href="properties-details.html" class="btn button-sm button-theme">Show Detail</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery-2.2.0.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap-submenu.js"></script>
+<script src="js/rangeslider.js"></script>
+<script src="js/jquery.mb.YTPlayer.js"></script>
+<script src="js/wow.min.js"></script>
+<script src="js/bootstrap-select.min.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/jquery.scrollUp.js"></script>
+<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="js/leaflet.js"></script>
+<script src="js/leaflet-providers.js"></script>
+<script src="js/leaflet.markercluster.js"></script>
+<script src="js/dropzone.js"></script>
+<script src="js/jquery.filterizr.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/maps.js"></script>
+<script src="js/app.js"></script>
+
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="js/ie10-viewport-bug-workaround.js"></script>
+<!-- Custom javascript -->
+<script src="js/ie10-viewport-bug-workaround.js"></script>
+
+
+
+
+<script type="text/javascript">
+
+
+$(".dropdown dt a").on('click', function() {
+  $(".dropdown dd ul").slideToggle('fast');
+});
+
+$(".dropdown dd ul li a").on('click', function() {
+  $(".dropdown dd ul").hide();
+});
+
+function getSelectedValue(id) {
+  return $("#" + id).find("dt a span.value").html();
+}
+
+$(document).bind('click', function(e) {
+  var $clicked = $(e.target);
+  if (!$clicked.parents().hasClass("dropdown")) $(".dropdown dd ul").hide();
+});
+
+$('.mutliSelect input[type="checkbox"]').on('click', function() {
+
+  var title = $(this).closest('.mutliSelect').find('input[type="checkbox"]').val(),
+    title = $(this).val() + ",";
+
+  if ($(this).is(':checked')) {
+    var html = '<span title="' + title + '">' + title + '</span>';
+    $('.multiSel').append(html);
+    $(".hida").hide();
+  } else {
+    $('span[title="' + title + '"]').remove();
+    var ret = $(".hida");
+    $('.dropdown dt a').append(ret);
+
+  }
+});
+
+
+
+
+
+
+</script>
+
+</body>
+
+<!-- Mirrored from storage.googleapis.com/themevessel-items/the-nest/index-4.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 02 Jul 2018 07:28:30 GMT -->
+</html>
